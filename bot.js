@@ -1,5 +1,15 @@
 const { Client, GatewayIntentBits } = require("discord.js");
-require("dotenv").config();
+const dotenv = require("dotenv");
+const http = require("http");
+
+dotenv.config();
+
+http
+  .createServer((req, res) => {
+    res.write("Bot is alive");
+    res.end();
+  })
+  .listen(process.env.PORT || 3001);
 
 const client = new Client({
   intents: [
